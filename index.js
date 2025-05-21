@@ -15,8 +15,11 @@ app.post("/submit", async (req, res) => {
   const { title, message, mood } = req.body;
   const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kathmandu" });
 
-const { title, problem, request, confession, mood } = req.body;
-const text = `
+app.post("/submit", async (req, res) => {
+  const { title, problem, request, confession, mood } = req.body;
+  const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kathmandu" });
+
+  const text = `
 ❤️ *New Grievance Received!*
 📌 *Title:* ${title}
 🗣️ *Problem:* ${problem}
@@ -24,8 +27,7 @@ const text = `
 😳 *Confession:* ${confession}
 😊 *Mood:* ${mood}
 🕒 *Time:* ${timestamp}
-`;
-
+  `;
 
   try {
     const response = await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
@@ -36,7 +38,7 @@ const text = `
         inline_keyboard: [[
           {
             text: "💬 Reply on Telegram",
-            url: "https://t.me/sayar223" // ← Replace with your actual Telegram username
+            url: "https://t.me/sayar223"
           }
         ]]
       }
@@ -48,10 +50,4 @@ const text = `
     console.error("❌ Telegram error:", error.response?.data || error.message);
     res.status(500).send("Failed to send grievance.");
   }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-app.get("/submit", (req, res) => {
-  res.send("This route only accepts POST submissions from the form.");
 });
