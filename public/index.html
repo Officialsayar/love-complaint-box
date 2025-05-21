@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#d6336c" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Grievance 🐭🌹</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ddd;
+    }
+    h2 { text-align: center; color: #d63384; }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #d63384;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c2185b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Submit a Grievance saija mam 🐭🌹</h2>
+    <form action="/submit" method="POST">
+     <input type="text" name="title" placeholder="Title" required />
+<textarea name="problem" placeholder="What's bothering you?" required></textarea>
+<textarea name="request" placeholder="Any request?" required></textarea>
+<textarea name="confession" placeholder="Confession" required></textarea>
+
+      <select name="mood">
+        <option value="😐 disapointed ">😐 Neutral</option>
+<option value=" 😊happy"> 😊happy</option>
+             <option value="😢 Sad">😢 Sad</option>
+        <option value="😡 Angry">😡 Angry</option>
+        <option value="😇 Forgiving">😇 Forgiving</option>
+        <option value="🛵travel">🛵travel
+        </option>
+      </select>
+      <button type="submit">Submit 💌</button>
+
+
+    </form>
+  </div>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+        .then(() => console.log("Service Worker registered!"));
+    }
+  </script>
+</body>
+</html>
